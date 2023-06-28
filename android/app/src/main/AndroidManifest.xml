@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lens_app">
+    package="com.nikohoffren.lens_app">
    <application
         android:label="lens_app"
         android:name="${applicationName}"

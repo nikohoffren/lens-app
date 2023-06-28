@@ -1,4 +1,4 @@
-package com.example.lens_app
+package com.nikohoffren.lens_app
 
 import io.flutter.embedding.android.FlutterActivity
 
