@@ -53,7 +53,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any inquiries or questions, please reach out to niko.hoffren@gmail.com(mailto:niko.hoffren@gmail.com).
+For any inquiries or questions, please reach out to niko.hoffren@gmail.com.
 
 
 
