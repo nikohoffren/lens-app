@@ -14,6 +14,7 @@ class CameraScreen extends StatefulWidget {
 class _CameraScreenState extends State<CameraScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
+  double _currentZoom = 1.0;
 
   @override
   void initState() {
@@ -26,6 +27,13 @@ class _CameraScreenState extends State<CameraScreen> {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  void _onInteractionUpdate(ScaleUpdateDetails details) {
+    setState(() {
+      _currentZoom *= details.scale.clamp(0.5, 2.0);
+      _controller.setZoomLevel(_currentZoom);
+    });
   }
 
   @override
@@ -49,7 +57,15 @@ class _CameraScreenState extends State<CameraScreen> {
             future: _initializeControllerFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                return CameraPreview(_controller);
+                return GestureDetector(
+                  onScaleUpdate: _onInteractionUpdate,
+                  child: InteractiveViewer(
+                    boundaryMargin: const EdgeInsets.all(0),
+                    minScale: 1.0,
+                    maxScale: 3.0,
+                    child: CameraPreview(_controller),
+                  ),
+                );
               } else {
                 return const Center(child: CircularProgressIndicator());
               }

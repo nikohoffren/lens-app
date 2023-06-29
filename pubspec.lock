@@ -144,6 +144,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.15.0"
+  google_ml_vision:
+    dependency: "direct main"
+    description:
+      name: google_ml_vision
+      sha256: d063d8885398d28391aac543e3476a5f8bab5dfc699eca466dd3484f822f4dd1
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.8"
   google_mlkit_barcode_scanning:
     dependency: transitive
     description:
