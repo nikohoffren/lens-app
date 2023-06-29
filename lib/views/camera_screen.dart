@@ -31,18 +31,31 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text('Camera'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.settings),
+          onPressed: () {
+            //! Handle the settings icon onPressed event
+          },
+        ),
       ),
-      body: FutureBuilder<void>(
-        future: _initializeControllerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return CameraPreview(_controller);
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          FutureBuilder<void>(
+            future: _initializeControllerFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return CameraPreview(_controller);
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
+        ],
       ),
     );
   }
